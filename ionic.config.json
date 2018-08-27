@@ -1,0 +1,7 @@
+{
+  "name": "anikindle",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

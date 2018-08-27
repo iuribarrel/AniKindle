@@ -1,0 +1,48 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+      Bem Vindo {{nome}}!
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <div padding>
+        <ion-segment [(ngModel)]="anime">
+          <ion-segment-button value="andamento">
+            Em Andamento
+          </ion-segment-button>
+          <ion-segment-button value="finalizados">
+            Finalizados
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      
+      <div [ngSwitch]="anime">
+        <ion-list *ngSwitchCase="'andamento'">
+            <ion-item *ngFor="let manga of mangasList">
+                <ion-thumbnail item-start>
+                  <img [src]="manga.image_url">
+                </ion-thumbnail>
+                <h2>{{manga.title}}</h2>
+                <p>{{manga.type}}</p>
+                <button (click)="fnc_descricao(manga.mal_id)" ion-button clear item-end>View</button>
+            </ion-item>
+        </ion-list>
+      
+        <ion-list *ngSwitchCase="'finalizados'">
+            <ion-item *ngFor="let manga of mangasListCompleted">
+                <ion-thumbnail item-start>
+                  <img [src]="manga.image_url">
+                </ion-thumbnail>
+                <h2>{{manga.title}}</h2>
+                <p>{{manga.type}}</p>
+                <button (click)="fnc_descricao(manga.mal_id)" ion-button clear item-end>View</button>
+            </ion-item>
+        </ion-list>
+      </div>
+    
+</ion-content>
