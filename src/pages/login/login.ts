@@ -4,6 +4,7 @@ import { AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ToastController } from 'ionic-angular';
 import { RegistroPage } from '../registro/registro';
+import { LoginProvider } from '../../providers/login/login';
 
 
 /**
@@ -24,23 +25,44 @@ export class LoginPage {
   senha   = "1234";
   usuario_digitado :String;
   senha_digitada   :String; 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public toastCtrl: ToastController ) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              public alertCtrl: AlertController, 
+              public toastCtrl: ToastController,
+              public login: LoginProvider ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
   fnc_login(){
-    if(this.usuario_digitado == this.usuario && this.senha_digitada == this.senha){
+    this.login.login().then((data) => {
       this.navCtrl.setRoot
       (HomePage, {name:this.usuario});
-    }else if(this.usuario_digitado == null && this.senha_digitada == null){
+    }).catch((error) => {
       this.presentToast2();
-    }
-    else{
-      this.presentToast();
-    }
+    })
+    
   }
+  fnc_login_fb(){
+    this.login.loginFacebook().then((data) => {
+      this.navCtrl.setRoot
+      (HomePage, {name:this.usuario});
+    }).catch((error) => {
+      this.presentToast();
+    })
+    
+  }
+
+  logar_emai(){
+    this.login.loginEmail(this.usuario_digitado, this.senha_digitada).then((data) => {
+      this.navCtrl.setRoot
+      (HomePage, {name:this.usuario});
+    }).catch((error) => {
+      this.presentToast();
+    })
+  }
+
   fnc_registro(){
     this.navCtrl.push(RegistroPage);
   } 

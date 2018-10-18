@@ -1,1 +1,14 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="eu">
+    <ion-header>
+        <ion-toolbar>
+            <ion-title></ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-list >
+            menuDraw
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav #eu [root]="rootPage"></ion-nav>

@@ -21,20 +21,28 @@
   <ion-list id="textlogin">
 
       <ion-item>
-        <ion-label fixed>Username</ion-label>
+        <ion-label fixed>Email</ion-label>
         <ion-input type="text" value="" [(ngModel)]="usuario_digitado" ></ion-input>
       </ion-item>
     
       <ion-item>
-        <ion-label fixed>Password</ion-label>
+        <ion-label fixed>Senha</ion-label>
         <ion-input type="password" [(ngModel)]="senha_digitada"></ion-input>
       </ion-item>
     
     </ion-list>
     <div id="botaologin">
-      <button (click)="fnc_login()" full ion-button>Login</button>
+        <!-- <button (click)="fnc_login_fb()">Login with Facebook</button> -->
+      <button (click)="logar_emai()" full ion-button>Login</button>
       <button (click)="fnc_registro()" full ion-button>Registrar</button>
+      <!-- <button (click)="fnc_login()">Login with Google</button> -->
+      <button (click)="fnc_login()" ion-button icon-left full>
+        <ion-icon name="logo-google"></ion-icon>
+        Login with Google
+      </button> 
+      
   </div>
+  
 </div>
   
 
